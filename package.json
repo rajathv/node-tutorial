@@ -1,0 +1,23 @@
+{
+  "name": "node-js-playlist",
+  "version": "1.0.0",
+  "description": "just fun",
+  "main": "stuff",
+  "scripts": {
+    "test": "stuff.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rajathv"
+  },
+  "keywords": [
+    "rvg",
+    "rajath"
+  ],
+  "author": "rvg",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.3"
+  }
+}
