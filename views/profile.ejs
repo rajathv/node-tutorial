@@ -2,17 +2,21 @@
 <html>
 <head>
 	<title>Awesome website</title>
-	<style>
-	body{ background: skyblue; 	padding: 30px;}
-	h1{ color: #ffff; font-family: verdana; font-size: 50px; letter-spacing: 2px; text-shadow: initial; text-align: center; }
-	p{ font-family: timesnewroman; font-size: 30px; text-align: center; }
-</style>
+	<link rel="stylesheet" type="text/css" href="/assets/style.css">
 </head>
 <body>
+	<% include partials/nav.ejs %>
 <h1>
 	 WELCOME <%= person %>
 </h1>
 <p> <strong> AGE : </strong> <%= data.age %>
 	<strong> JOB TITLE : </strong> <%= data.job %></p>
+	<h1> Hobbies </h1>
+	<ul>
+		<% data.hobbies.forEach(function(items){ %>
+		<li><%= items %></li>
+
+	<% }); %>
+	</ul>
 </body>
 </html>

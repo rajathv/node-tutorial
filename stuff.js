@@ -128,10 +128,10 @@ npm init // creates package.json to store dependancies used in the node app
 */
 
 /*
-//USING Express
+//USING Express for routing 
 
 var express = require('express');
-
+//set express to route 
 var app = express()
 
 app.get('/',function(req,res){
@@ -150,3 +150,37 @@ app.listen(3000);
 
 
 //For dealing with dynamic content we use EJS package which can inject data into html file
+
+
+var express = require('express');
+
+var app = express()
+
+//template engine 
+app.set('view engine','ejs');
+ //middle ware using express static whichever request made to /assets folder from the profile.ejs file will be routed throught the middelware to this function
+ app.use('/assets', express.static('assets'));
+app.get('/',function(req,res){
+
+	res.render('index');
+
+});
+app.get('/contact', function(req,res){
+
+	// express creates querry object to access data 
+	console.log(req.query);
+
+	res.render('contact');
+});
+//To get a certain ID
+app.get('/profile/:id', function(req,res){
+	var data = { age : "45" , job : "beingAwesome" , hobbies : ['coding', 'designing', 'riding']};
+
+	//render checks the views folder in the current directory for filename.ejs and renders it to the server
+	//the render function takes to arguments one is the file to be rendered and anotehr is the data to  be sent to dynamically update on the app
+	res.render('profile',{ person: req.params.id , data : data  });
+});
+app.listen(3000);
+
+
+//TO serve static files we should use middle ware by using express middleware ie middleware which runs between req and res
